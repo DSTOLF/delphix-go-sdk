@@ -9,4 +9,4 @@ export APP_DATA_MOUNT_PATH=/mnt/provision
 export APP_NAMESPACE=default
 export GROUP_NAME=K8S-Volumes
 export ENVIRONMENT_NAME=k8s-master
-export REPO_NAME="Kubernetes kubernetes-admin@kubernetes - v1.18.3"
+export REPO_NAME="Kubernetes kubernetes-admin@kubernetes - v1.18.4"

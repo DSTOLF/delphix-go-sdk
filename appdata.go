@@ -31,7 +31,7 @@ func (c *Client) FindAppDataContainerByName(n string) (AppDataContainerStruct, e
 	var appDataObj AppDataContainerStruct
 	var err error
 	dbObj, err := c.FindDatabaseByName(n)
-	if err != nil || dbObj == interface{} {
+	if err != nil || dbObj == nil {
 		return appDataObj, err
 	}
 
