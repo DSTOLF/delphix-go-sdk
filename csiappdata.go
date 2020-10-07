@@ -92,7 +92,7 @@ func (c *Client) FindCSIAppDataByName(n string) (AppDataContainerStruct, error) 
 }
 
 
-// FindCSIAppDataByName transforms an interface into an AppDataContainerStruct
+// FindCSIAppDataByGUID transforms an interface into an AppDataContainerStruct
 func (c *Client) FindCSIAppDataByGUID(n string) (AppDataContainerStruct, error) {
 	var appDataObj AppDataContainerStruct
 	var err error
