@@ -115,6 +115,18 @@ func (c *Client) FindDatabaseByName(n string) (interface{}, error) {
 	return result, err //return the reference
 }
 
+// FindDatabaseByName returns the database object (interface) of the named (n) database
+func (c *Client) FindDatabaseByGUID(n string) (interface{}, error) {
+	result, err := c.FindObject("database", "guid", n, 0)
+	if err != nil {
+		glog.Fatalf("Wamp, Wamp: %s\n", err)
+	}
+	if result == nil {
+		glog.V(2).Infof("Database GUID %s not found\n", n)
+	}
+	return result, err //return the reference
+}
+
 // FindSnapshotByReference returns the timestamp (string) of the Snapshot
 func (c *Client) FindSnapshotByReference(r string) (interface{}, error) {
 	result, err := c.FindObject("snapshot", "reference", r, 0)
