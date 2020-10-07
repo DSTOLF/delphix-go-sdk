@@ -91,6 +91,28 @@ func (c *Client) FindCSIAppDataByName(n string) (AppDataContainerStruct, error) 
 	return appDataObj, err
 }
 
+
+// FindCSIAppDataByName transforms an interface into an AppDataContainerStruct
+func (c *Client) FindCSIAppDataByGUID(n string) (AppDataContainerStruct, error) {
+	var appDataObj AppDataContainerStruct
+	var err error
+	dbObj, err := c.FindDatabaseByGUID(n)
+	if err != nil {
+		return appDataObj, err
+	}
+	if dbObj == nil {
+		return appDataObj, err
+	}
+	t := dbObj.(map[string]interface{})["type"].(string)
+
+	if t == "AppDataContainer" {
+		err = mapstructure.Decode(dbObj, &appDataObj)
+	} else {
+		err = fmt.Errorf("ERROR: Type was %s, expected AppDataContainer", t)
+	}
+	return appDataObj, err
+}
+
 // ProvisionCSIAppData provisions an AppData Container (clone or empty)
 // name - name of the new volume
 // envRef - environment reference
